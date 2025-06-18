@@ -1,6 +1,6 @@
 🍽️Hungry Hault
 
-Hungry Hault is a web application for restaurant table booking with user signup and login functionality.
+Hungry Hault is a full-stack web application for restaurant table booking with user signup and login functionality.
 
 ## Features
 
