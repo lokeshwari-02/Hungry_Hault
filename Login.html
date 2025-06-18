@@ -70,8 +70,22 @@
         .login-container a:hover {
             text-decoration: underline;
         }
-    </style>
-    <script>
+    </style>    
+</head>
+<body>
+    <div class="login-container">
+        <h1 style="font-family: 'Brush Script MT', cursive; color: black;">Hungry Hault</h1>   
+        <h2>Enter Your Login Credentials</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Not registered?
+            <a href="signup.html">Create an account</a>
+        </p>
+    </div>
+     <script>
         document.querySelector("form").addEventListener("submit", async function(event) {
             event.preventDefault();
             const email = document.querySelector("input[type='text']").value;
@@ -92,20 +106,5 @@
             }
         });
     </script>
-    
-</head>
-<body>
-    <div class="login-container">
-        <h1 style="font-family: 'Brush Script MT', cursive; color: black;">Hungry Hault</h1>   
-        <h2>Enter Your Login Credentials</h2>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Not registered?
-            <a href="signup.html">Create an account</a>
-        </p>
-    </div>
 </body>
 </html>

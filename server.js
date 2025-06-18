@@ -5,6 +5,9 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // Connect to MongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/tableBooking", {
@@ -45,10 +48,23 @@ app.get("/bookings", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch bookings" });
     }
 });
+
+// Define User Schema
+const userSchema = new mongoose.Schema({
+  username: String,
+  email: String,
+  password: String
+});
+
+// Define User Model
+const User = mongoose.model("User", userSchema);
+
 // User Signup
 app.post("/signup", async (req, res) => {
-    try {
+    try { 
+        // console.log("✅ Signup API hit"); // tessting purpose
         const { username, email, password } = req.body;
+        console.log("Received data:", { username, email});
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -58,6 +74,8 @@ app.post("/signup", async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ username, email, password: hashedPassword });
         await newUser.save();
+        // console.log("Submitting signup data:", { username, email }); // tessting purpose
+
         res.json({ message: "User registered successfully" });
     } catch (err) {
         res.status(500).json({ error: "Error registering user" });
