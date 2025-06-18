@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Contact Us - Hungry Hault</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: url("./images/bg.jpg.");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .contact-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contact-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: rgb(230, 139, 20);
+        }
+
+        .contact-container p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form label {
+            font-size: 1rem;
+            text-align: left;
+            color: rgb(230, 139, 20);
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(230, 139, 20, 0.7);
+        }
+
+        .contact-form textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .contact-form button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-weight: bold;
+            color: aliceblue;
+            background-color: rgb(230, 139, 20);
+            border-radius: 5px;
+            border: 1px solid rgb(230, 139, 20);
+            box-shadow: 0 10px 15px rgb(67, 30, 15);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p style="color: white;">We'd love to hear from you! Fill out the form below to get in touch.</p>
+        <form class="contact-form" action="#" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/letter-h.png">
+    <title>Restaurant Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("images/bg.jpg");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        div {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: black;
+        }
+        .or-divider {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+        }
+        .or-divider:not(:empty)::before {
+            margin-right: .3em;
+        }
+        .or-divider:not(:empty)::after {
+            margin-left: .5em;
+        }
+        button.google-btn {
+            background-color: #db4437;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        button.google-btn img {
+            margin-right: 10px;
+        }
+        p {
+            margin-top: 20px;
+        }
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        document.querySelector("form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const username = document.querySelector("input[name='username']").value;
+            const email = document.querySelector("input[name='email']").value;
+            const password = document.querySelector("input[name='password']").value;
+            const confirmPassword = document.querySelector("input[name='confirm_password']").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            const response = await fetch("http://localhost:5000/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert("Signup successful! You can now log in.");
+                window.location.href = "login.html";
+            } else {
+                alert(data.error);
+            }
+        });
+    </script>
+    
+</head>
+<body>
+
+<div>
+    <h2>Sign Up</h2>
+    <form>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="or-divider">or</div>
+    <button class="google-btn" onclick="window.location.href='/auth/google'">
+        Sign Up with Google
+    </button>
+</div>
+
+</body>
+</html>
