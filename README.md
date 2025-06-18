@@ -9,7 +9,8 @@ Hungry Hault is a web application for restaurant table booking with user signup 
 - Stores data in MongoDB
 - Built with Node.js, Express, MongoDB, HTML, CSS, and JavaScript
 
-📦 Tech Stack
+##📦 Tech Stack
+
 Frontend: HTML, CSS, JavaScript
 
 Backend: Node.js, Express.js
